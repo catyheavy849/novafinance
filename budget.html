@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Planner - SG Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#g)"/><path d="M7 14h4l2-5 3 10 2-5h3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#667eea"/><stop offset="1" stop-color="#764ba2"/></linearGradient></defs></svg>
+      SG Finance
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-btn">Calculators &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="loan.html">Loan Calculator</a><a href="mortgage.html">Mortgage Calculator</a><a href="cpf.html">CPF Calculator</a><a href="savings.html">Savings Calculator</a><a href="investment.html">Investment Calculator</a><a href="budget.html">Budget Planner</a><a href="retirement.html">Retirement Calculator</a><a href="emergency.html">Emergency Fund</a><a href="dti.html">Debt-to-Income</a><a href="affordability.html">Affordability</a><a href="tools.html">More Tools</a>
+        </div>
+      </li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="calc-page">
+    <div class="calc-header" style="background:linear-gradient(135deg,#3b82f6 0%,#1d4ed8 100%)">
+      <h1>&#128202; Budget Planner</h1>
+      <p>Plan your monthly budget and track where your money goes</p>
+    </div>
+    <div class="calc-body">
+      <div class="calc-card">
+        <form class="calc-form" id="budgetForm" onsubmit="return false">
+          <h4 style="margin-bottom:1rem;color:var(--text-secondary)">Income</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Monthly Income (after tax)</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budIncome" placeholder="5000" min="1"></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+
+          <hr class="divider">
+          <h4 style="margin-bottom:1rem;color:var(--text-secondary)">Fixed Expenses</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Housing / Rent</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budHousing" placeholder="1200" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Insurance</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budInsurance" placeholder="200" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Loan Repayments</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budLoans" placeholder="300" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Utilities & Phone</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budUtilities" placeholder="150" min="0"></div>
+            </div>
+          </div>
+
+          <hr class="divider">
+          <h4 style="margin-bottom:1rem;color:var(--text-secondary)">Variable Expenses</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Food & Groceries</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budFood" placeholder="600" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Transport</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budTransport" placeholder="200" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Entertainment</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budEntertain" placeholder="150" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Others</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budOthers" placeholder="100" min="0"></div>
+            </div>
+          </div>
+
+          <hr class="divider">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Savings Target</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="budSavings" placeholder="500" min="0"></div>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" onclick="calculateBudget()">Calculate</button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm('budgetForm')">Reset</button>
+          </div>
+        </form>
+
+        <div class="calc-results" id="budResults" style="display:none">
+          <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--text-secondary)">Budget Summary</h3>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-label">Total Fixed</div>
+              <div class="result-value" id="resFixed">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Total Variable</div>
+              <div class="result-value" id="resVariable">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Savings Target</div>
+              <div class="result-value green" id="resSavTarget">—</div>
+            </div>
+            <div class="result-item result-highlight">
+              <div class="result-label">Remaining Balance</div>
+              <div class="result-value" id="resBalance">—</div>
+            </div>
+          </div>
+
+          <h4 style="margin-top:1.5rem;margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-secondary)">Spending Breakdown</h4>
+          <div id="budgetBars"></div>
+
+          <div class="chart-container"><canvas id="budChart"></canvas></div>
+          <div class="chart-legend" id="budLegend"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 SG Finance Calculator &mdash; Powered by <a href="https://www.tertiarycourses.com.sg/" target="_blank" rel="noopener">Tertiary Infotech Academy Pte Ltd</a></p>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/budget.js"></script>
+</body>
+</html>

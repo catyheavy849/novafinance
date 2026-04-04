@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Calculator - SG Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#g)"/><path d="M7 14h4l2-5 3 10 2-5h3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#667eea"/><stop offset="1" stop-color="#764ba2"/></linearGradient></defs></svg>
+      SG Finance
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-btn">Calculators &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="loan.html">Loan Calculator</a><a href="mortgage.html">Mortgage Calculator</a><a href="cpf.html">CPF Calculator</a><a href="savings.html">Savings Calculator</a><a href="investment.html">Investment Calculator</a><a href="budget.html">Budget Planner</a><a href="retirement.html">Retirement Calculator</a><a href="emergency.html">Emergency Fund</a><a href="dti.html">Debt-to-Income</a><a href="affordability.html">Affordability</a><a href="tools.html">More Tools</a>
+        </div>
+      </li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="calc-page">
+    <div class="calc-header" style="background:linear-gradient(135deg,#22c55e 0%,#059669 100%)">
+      <h1>&#128176; Savings Calculator</h1>
+      <p>See how your savings grow over time with compound interest</p>
+    </div>
+    <div class="calc-body">
+      <div class="calc-card">
+        <form class="calc-form" id="savingsForm" onsubmit="return false">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Initial Savings</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="savInitial" placeholder="10000" min="0"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Monthly Contribution</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="savMonthly" placeholder="500" min="0"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Annual Interest Rate</label>
+              <div class="input-suffix"><input type="number" id="savRate" placeholder="3.0" min="0" step="any"><span>%</span></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Number of Years</label>
+              <div class="input-suffix"><input type="number" id="savYears" placeholder="10" min="1" max="60"><span>years</span></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" onclick="calculateSavings()">Calculate</button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm('savingsForm')">Reset</button>
+          </div>
+        </form>
+        <div class="calc-results" id="savResults" style="display:none">
+          <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--text-secondary)">Results</h3>
+          <div class="result-grid">
+            <div class="result-item result-highlight">
+              <div class="result-label">Future Value</div>
+              <div class="result-value" id="resFuture">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Total Contributions</div>
+              <div class="result-value" id="resContrib">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Interest Earned</div>
+              <div class="result-value green" id="resSavInterest">—</div>
+            </div>
+          </div>
+          <div class="chart-container"><canvas id="savChart"></canvas></div>
+          <div class="chart-legend" id="savLegend"></div>
+          <div class="formula-box">
+            <h4>&#128218; Formula</h4>
+            <code>FV = P(1+r)^n + PMT &times; ((1+r)^n - 1) / r</code>
+            <p>P = initial savings, PMT = monthly contribution, r = monthly rate, n = total months</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 SG Finance Calculator &mdash; Powered by <a href="https://www.tertiarycourses.com.sg/" target="_blank" rel="noopener">Tertiary Infotech Academy Pte Ltd</a></p>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/savings.js"></script>
+</body>
+</html>

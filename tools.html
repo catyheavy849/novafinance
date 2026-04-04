@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Tools - SG Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#g)"/><path d="M7 14h4l2-5 3 10 2-5h3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#667eea"/><stop offset="1" stop-color="#764ba2"/></linearGradient></defs></svg>
+      SG Finance
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-btn">Calculators &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="loan.html">Loan Calculator</a><a href="mortgage.html">Mortgage Calculator</a><a href="cpf.html">CPF Calculator</a><a href="savings.html">Savings Calculator</a><a href="investment.html">Investment Calculator</a><a href="budget.html">Budget Planner</a><a href="retirement.html">Retirement Calculator</a><a href="emergency.html">Emergency Fund</a><a href="dti.html">Debt-to-Income</a><a href="affordability.html">Affordability</a><a href="tools.html">More Tools</a>
+        </div>
+      </li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="calc-page">
+    <div class="calc-header" style="background:linear-gradient(135deg,#22c55e 0%,#059669 100%)">
+      <h1>&#128736; More Financial Tools</h1>
+      <p>Additional calculators for everyday financial needs</p>
+    </div>
+
+    <div class="container-sm" style="padding-top:2rem">
+
+      <!-- Simple Interest -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128178; Simple Interest Calculator</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Calculate interest using the simple interest formula: I = P &times; r &times; t</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Principal Amount</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="siPrincipal" placeholder="10000" min="1"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Annual Rate</label>
+              <div class="input-suffix"><input type="number" id="siRate" placeholder="5" min="0.01" step="any"><span>%</span></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Time Period</label>
+              <div class="input-suffix"><input type="number" id="siYears" placeholder="3" min="0.1" step="any"><span>years</span></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcSimpleInterest()">Calculate</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="siResults" hidden>
+            <div class="result-item"><div class="result-label">Interest</div><div class="result-value" id="siInterest">—</div></div>
+            <div class="result-item"><div class="result-label">Total Amount</div><div class="result-value green" id="siTotal">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credit Card Interest -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128179; Credit Card Interest Calculator</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">See how much interest you'll pay on credit card balances</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Outstanding Balance</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="ccBalance" placeholder="5000" min="1"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Annual Interest Rate</label>
+              <div class="input-suffix"><input type="number" id="ccRate" placeholder="25.9" min="0.01" step="any"><span>%</span></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Monthly Payment</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="ccPayment" placeholder="200" min="1"></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcCreditCard()">Calculate</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="ccResults" hidden>
+            <div class="result-item"><div class="result-label">Months to Pay Off</div><div class="result-value" id="ccMonths">—</div></div>
+            <div class="result-item"><div class="result-label">Total Interest</div><div class="result-value red" id="ccInterest">—</div></div>
+            <div class="result-item"><div class="result-label">Total Paid</div><div class="result-value" id="ccTotal">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GST Calculator -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128176; GST Calculator (Singapore)</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Singapore GST rate: 9% (effective 1 Jan 2024)</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Amount</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="gstAmount" placeholder="1000" min="0.01" step="any"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Calculation Type</label>
+              <select id="gstType">
+                <option value="add">Add GST (price before GST)</option>
+                <option value="remove">Remove GST (price includes GST)</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcGST()">Calculate</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="gstResults" hidden>
+            <div class="result-item"><div class="result-label">Before GST</div><div class="result-value" id="gstBefore">—</div></div>
+            <div class="result-item"><div class="result-label">GST (9%)</div><div class="result-value orange" id="gstTax">—</div></div>
+            <div class="result-item"><div class="result-label">After GST</div><div class="result-value green" id="gstAfter">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Income Tax Estimator -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128200; Income Tax Estimator (Singapore)</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Simplified tax estimate for Singapore tax residents (YA2024 rates)</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Annual Chargeable Income</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="taxIncome" placeholder="80000" min="0"></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcIncomeTax()">Estimate</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="taxResults" hidden>
+            <div class="result-item"><div class="result-label">Estimated Tax</div><div class="result-value red" id="taxAmount">—</div></div>
+            <div class="result-item"><div class="result-label">Effective Rate</div><div class="result-value" id="taxEffRate">—</div></div>
+            <div class="result-item"><div class="result-label">After Tax Income</div><div class="result-value green" id="taxAfter">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Currency Converter -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128177; Currency Converter</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Quick conversion using sample exchange rates (for reference only)</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Amount in SGD</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="fxAmount" placeholder="1000" min="0.01" step="any"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Convert to</label>
+              <select id="fxCurrency">
+                <option value="0.74">USD (US Dollar)</option>
+                <option value="0.69">EUR (Euro)</option>
+                <option value="0.59">GBP (British Pound)</option>
+                <option value="112.50">JPY (Japanese Yen)</option>
+                <option value="5.38">CNY (Chinese Yuan)</option>
+                <option value="0.98">AUD (Australian Dollar)</option>
+                <option value="3.48">MYR (Malaysian Ringgit)</option>
+                <option value="27.25">THB (Thai Baht)</option>
+                <option value="11600">IDR (Indonesian Rupiah)</option>
+                <option value="41.80">PHP (Philippine Peso)</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcCurrency()">Convert</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="fxResults" hidden>
+            <div class="result-item"><div class="result-label">SGD Amount</div><div class="result-value" id="fxSGD">—</div></div>
+            <div class="result-item result-highlight"><div class="result-label">Converted Amount</div><div class="result-value" id="fxConverted">—</div></div>
+            <div class="result-item"><div class="result-label">Exchange Rate</div><div class="result-value" id="fxRate">—</div></div>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem">* Sample rates for illustration only. Check live rates before transacting.</p>
+        </div>
+      </div>
+
+      <!-- Net Worth Calculator -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128176; Net Worth Calculator</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Assets minus liabilities = your net worth</p>
+          <h4 style="margin-bottom:0.75rem;font-size:0.85rem;color:var(--text-secondary)">Assets</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Cash & Savings</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwCash" placeholder="50000" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Investments</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwInvest" placeholder="100000" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>CPF Balances</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwCPF" placeholder="80000" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Property Value</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwProperty" placeholder="500000" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Other Assets</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwOther" placeholder="20000" min="0"></div>
+            </div>
+          </div>
+          <hr class="divider">
+          <h4 style="margin-bottom:0.75rem;font-size:0.85rem;color:var(--text-secondary)">Liabilities</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Mortgage Outstanding</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwMortgage" placeholder="300000" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Car Loan</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwCarLoan" placeholder="30000" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label>Other Debts</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="nwDebt" placeholder="5000" min="0"></div>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcNetWorth()">Calculate</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="nwResults" hidden>
+            <div class="result-item"><div class="result-label">Total Assets</div><div class="result-value green" id="nwAssets">—</div></div>
+            <div class="result-item"><div class="result-label">Total Liabilities</div><div class="result-value red" id="nwLiabilities">—</div></div>
+            <div class="result-item result-highlight"><div class="result-label">Net Worth</div><div class="result-value" id="nwTotal">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Break-even Calculator -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128202; Break-even Calculator</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Find out how many units you need to sell to cover your costs</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Fixed Costs</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="beFixed" placeholder="10000" min="0"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Price per Unit</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="bePrice" placeholder="50" min="0.01" step="any"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Variable Cost per Unit</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="beCost" placeholder="20" min="0" step="any"></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcBreakeven()">Calculate</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="beResults" hidden>
+            <div class="result-item result-highlight"><div class="result-label">Break-even Units</div><div class="result-value" id="beUnits">—</div></div>
+            <div class="result-item"><div class="result-label">Break-even Revenue</div><div class="result-value green" id="beRevenue">—</div></div>
+            <div class="result-item"><div class="result-label">Contribution Margin</div><div class="result-value" id="beMargin">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Expense Tracker -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#128203; Monthly Expense Tracker</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Quickly tally your monthly expenses by category</p>
+          <div class="form-grid">
+            <div class="form-group"><label>Housing</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Food & Dining</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Transport</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Utilities</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Insurance</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Shopping</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Entertainment</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Healthcare</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Education</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+            <div class="form-group"><label>Miscellaneous</label><div class="input-prefix"><span>$</span><input type="number" class="expense-input" placeholder="0" min="0"></div></div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcExpenses()">Total Up</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="expResults" hidden>
+            <div class="result-item result-highlight"><div class="result-label">Total Monthly Expenses</div><div class="result-value" id="expTotal">—</div></div>
+            <div class="result-item"><div class="result-label">Daily Average</div><div class="result-value" id="expDaily">—</div></div>
+            <div class="result-item"><div class="result-label">Annual Estimate</div><div class="result-value" id="expAnnual">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education Loan Calculator -->
+      <div class="calc-card" style="margin-bottom:2rem">
+        <div class="calc-form">
+          <h3 style="margin-bottom:0.25rem">&#127891; Education / Study Loan Calculator</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Plan your education loan repayment</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Total Tuition Fees</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="eduLoan" placeholder="30000" min="1"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Annual Interest Rate</label>
+              <div class="input-suffix"><input type="number" id="eduRate" placeholder="4.75" min="0" step="any"><span>%</span></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Repayment Period</label>
+              <div class="input-suffix"><input type="number" id="eduYears" placeholder="10" min="1" max="30"><span>years</span></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="calcEduLoan()">Calculate</button>
+          </div>
+          <div class="result-grid" style="margin-top:1rem" id="eduResults" hidden>
+            <div class="result-item result-highlight"><div class="result-label">Monthly Payment</div><div class="result-value" id="eduMonthly">—</div></div>
+            <div class="result-item"><div class="result-label">Total Repayment</div><div class="result-value" id="eduTotal">—</div></div>
+            <div class="result-item"><div class="result-label">Total Interest</div><div class="result-value red" id="eduInterest">—</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 SG Finance Calculator &mdash; Powered by <a href="https://www.tertiarycourses.com.sg/" target="_blank" rel="noopener">Tertiary Infotech Academy Pte Ltd</a></p>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/tools.js"></script>
+</body>
+</html>

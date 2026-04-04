@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Fund Calculator - SG Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#g)"/><path d="M7 14h4l2-5 3 10 2-5h3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#667eea"/><stop offset="1" stop-color="#764ba2"/></linearGradient></defs></svg>
+      SG Finance
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-btn">Calculators &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="loan.html">Loan Calculator</a><a href="mortgage.html">Mortgage Calculator</a><a href="cpf.html">CPF Calculator</a><a href="savings.html">Savings Calculator</a><a href="investment.html">Investment Calculator</a><a href="budget.html">Budget Planner</a><a href="retirement.html">Retirement Calculator</a><a href="emergency.html">Emergency Fund</a><a href="dti.html">Debt-to-Income</a><a href="affordability.html">Affordability</a><a href="tools.html">More Tools</a>
+        </div>
+      </li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="calc-page">
+    <div class="calc-header" style="background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%)">
+      <h1>&#128657; Emergency Fund Calculator</h1>
+      <p>Find out how much you need saved for unexpected situations</p>
+    </div>
+    <div class="calc-body">
+      <div class="calc-card">
+        <div class="info-box" style="margin:1.5rem 1.5rem 0">
+          <span class="info-box-icon">&#9432;</span>
+          <p>Financial experts recommend having 3-6 months of expenses saved as an emergency fund. Those with variable income or dependents may want 6-12 months.</p>
+        </div>
+        <form class="calc-form" id="emergForm" onsubmit="return false">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Monthly Essential Expenses</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="emMonthly" placeholder="3000" min="1"></div>
+              <small>Include rent, food, transport, insurance, utilities</small>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Months to Cover</label>
+              <div class="input-suffix"><input type="number" id="emMonths" placeholder="6" min="1" max="24"><span>months</span></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Current Emergency Savings</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="emCurrent" placeholder="5000" min="0"></div>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" onclick="calculateEmergency()">Calculate</button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm('emergForm')">Reset</button>
+          </div>
+        </form>
+        <div class="calc-results" id="emResults" style="display:none">
+          <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--text-secondary)">Emergency Fund Target</h3>
+          <div class="result-grid">
+            <div class="result-item result-highlight">
+              <div class="result-label">Recommended Fund</div>
+              <div class="result-value" id="resEmTarget">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Current Savings</div>
+              <div class="result-value" id="resEmCurrent">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Shortfall</div>
+              <div class="result-value" id="resEmShortfall">—</div>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem">
+            <div class="progress-label">
+              <span>Progress to Goal</span>
+              <span id="emProgressPct">0%</span>
+            </div>
+            <div class="progress-bar" style="height:12px">
+              <div class="progress-fill" id="emProgressBar" style="width:0%"></div>
+            </div>
+          </div>
+          <div id="emStatus" style="margin-top:1rem"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 SG Finance Calculator &mdash; Powered by <a href="https://www.tertiarycourses.com.sg/" target="_blank" rel="noopener">Tertiary Infotech Academy Pte Ltd</a></p>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/emergency.js"></script>
+</body>
+</html>

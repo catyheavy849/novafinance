@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPF Calculator - SG Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#g)"/><path d="M7 14h4l2-5 3 10 2-5h3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#667eea"/><stop offset="1" stop-color="#764ba2"/></linearGradient></defs></svg>
+      SG Finance
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-btn">Calculators &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="loan.html">Loan Calculator</a>
+          <a href="mortgage.html">Mortgage Calculator</a>
+          <a href="cpf.html">CPF Calculator</a>
+          <a href="savings.html">Savings Calculator</a>
+          <a href="investment.html">Investment Calculator</a>
+          <a href="budget.html">Budget Planner</a>
+          <a href="retirement.html">Retirement Calculator</a>
+          <a href="emergency.html">Emergency Fund</a>
+          <a href="dti.html">Debt-to-Income</a>
+          <a href="affordability.html">Affordability</a>
+          <a href="tools.html">More Tools</a>
+        </div>
+      </li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="calc-page">
+    <div class="calc-header" style="background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%)">
+      <h1>&#127480;&#127468; CPF Calculator</h1>
+      <p>Calculate your Central Provident Fund contributions based on Singapore rates</p>
+    </div>
+    <div class="calc-body">
+      <div class="calc-card">
+        <div class="info-box" style="margin:1.5rem 1.5rem 0">
+          <span class="info-box-icon">&#9432;</span>
+          <p>CPF rates shown are for Singapore Citizens / Permanent Residents (3rd year onwards), age 55 and below. Employee: 20%, Employer: 17%. Ordinary Wage ceiling: $6,800/month.</p>
+        </div>
+        <form class="calc-form" id="cpfForm" onsubmit="return false">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Monthly Gross Salary</label>
+              <div class="input-prefix"><span>$</span><input type="number" id="cpfSalary" placeholder="5000" min="1"></div>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label>Age Group</label>
+              <select id="cpfAge">
+                <option value="55below">55 and below</option>
+                <option value="55to60">Above 55 to 60</option>
+                <option value="60to65">Above 60 to 65</option>
+                <option value="65to70">Above 65 to 70</option>
+                <option value="70above">Above 70</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Citizenship Status</label>
+              <select id="cpfCitizen">
+                <option value="sc">Singapore Citizen</option>
+                <option value="pr3">PR (3rd year onwards)</option>
+                <option value="pr2">PR (2nd year)</option>
+                <option value="pr1">PR (1st year)</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" onclick="calculateCPF()">Calculate</button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm('cpfForm')">Reset</button>
+          </div>
+        </form>
+        <div class="calc-results" id="cpfResults" style="display:none">
+          <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--text-secondary)">CPF Contribution Breakdown</h3>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-label">Employee Contribution</div>
+              <div class="result-value" id="resEmployee">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Employer Contribution</div>
+              <div class="result-value green" id="resEmployer">—</div>
+            </div>
+            <div class="result-item result-highlight">
+              <div class="result-label">Total Monthly CPF</div>
+              <div class="result-value" id="resTotalCPF">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Take-Home Pay</div>
+              <div class="result-value green" id="resTakeHome">—</div>
+            </div>
+          </div>
+
+          <h4 style="margin-top:1.5rem;margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-secondary)">Account Allocation</h4>
+          <div class="result-grid" style="grid-template-columns:repeat(3,1fr)">
+            <div class="result-item">
+              <div class="result-label">Ordinary (OA)</div>
+              <div class="result-value" id="resOA">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Special (SA)</div>
+              <div class="result-value" id="resSA">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">MediSave (MA)</div>
+              <div class="result-value" id="resMA">—</div>
+            </div>
+          </div>
+
+          <div class="chart-container"><canvas id="cpfChart"></canvas></div>
+          <div class="chart-legend" id="cpfLegend"></div>
+
+          <div class="formula-box">
+            <h4>&#128218; CPF Rates (SC/PR3+, age 55 and below)</h4>
+            <p>Employee: 20% | Employer: 17% | Total: 37%<br>
+            OW Ceiling: $6,800/month | AW Ceiling: $102,000 - Total OW subject to CPF<br>
+            OA: 23% | SA: 6% | MA: 8% of total wages subject to CPF</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 SG Finance Calculator &mdash; Powered by <a href="https://www.tertiarycourses.com.sg/" target="_blank" rel="noopener">Tertiary Infotech Academy Pte Ltd</a></p>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/cpf.js"></script>
+</body>
+</html>
