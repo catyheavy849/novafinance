@@ -5,7 +5,7 @@
 // Theme Management
 const ThemeManager = {
   init() {
-    const saved = localStorage.getItem('sgfinance-theme') || 'light';
+    const saved = localStorage.getItem('sgfinance-theme') || 'dark';
     this.set(saved);
     document.querySelector('.theme-toggle')?.addEventListener('click', () => {
       this.toggle();
